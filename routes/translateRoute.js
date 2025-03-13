@@ -1,11 +1,12 @@
 import express from "express";
+import "dotenv/config";
+import { translateText } from "../controllers/translateController.js";
 
 const router = express.Router();
 
-router.delete("/:id", (req, res) => {
-	// Respond with a message that the note has been deleted
-	res.send("This will delete the note whose ID is " + req.params.id);
+router.get("/", (req, res) => {
+	const {text, targetLanguage} = req.body;
+    res.send(translateText(text, targetLanguage));
 });
-
 
 export default router;
