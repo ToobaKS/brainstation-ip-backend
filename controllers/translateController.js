@@ -13,7 +13,7 @@ export async function translateText (text, targetLanguage){
         systemInstruction: "Speak to me in " + targetLanguage + "language",
     });
 
-    const prompt = "Give me only the translation of the" + text + "into language " + targetLanguage;
+    const prompt = `Give me only the translation of the following text into ${targetLanguage}. Preserve the original line breaks using "\\n":\n\n${text}`;
 
     const result = await model.generateContent(prompt);
     console.log(result.response.text());
